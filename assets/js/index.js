@@ -299,19 +299,8 @@
   }
   
   function changeMode(isDarkMode) {
-    const disableDark = elems('#disable-dark');
-    if(disableDark != false){
-      bank.setItem(storageKey, light)
-      elemAttribute(doc, data, light);
-      return
-    }
-    if(isDarkMode) {
-      bank.setItem(storageKey, light)
-      elemAttribute(doc, data, light);
-    } else {
-      bank.setItem(storageKey, dark);
-      elemAttribute(doc, data, dark);
-    }
+    bank.setItem(storageKey, light)
+    elemAttribute(doc, data, light);
   }
   
   (function lazyLoadImages() {
@@ -325,19 +314,8 @@
   })();
   
   function setUserColorMode(mode = false) {
-    const isDarkMode = currentMode() == dark;
-    const storedMode = bank.getItem(storageKey);
-    if(storedMode) {
-      if(mode) {
-        changeMode(isDarkMode);
-      } else {
-        elemAttribute(doc, data, storedMode);
-      }
-    } else {
-      if(mode === true) {
-        changeMode(isDarkMode) 
-      }
-    }
+    bank.setItem(storageKey, light)
+    elemAttribute(doc, data, light);
   }
   
   setUserColorMode();
